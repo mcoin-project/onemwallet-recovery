@@ -1525,6 +1525,15 @@
                 DOM.litecoinLtubContainer.removeClass("hidden");
             },
         },
+        {
+            name: "MCN - mCoin (testnet)",
+            segwitAvailable: true,
+            onSelect: function() {
+                network = bitcoinjs.bitcoin.networks.mcointest;
+                setHdCoin(2);
+                DOM.litecoinLtubContainer.removeClass("hidden");
+            },
+        }
     ]
 
     var clients = [
