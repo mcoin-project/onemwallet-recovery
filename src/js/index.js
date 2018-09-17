@@ -850,7 +850,7 @@
                 }
                 // query Insight Lite for balance
                 // convert from sats to whole ltc + append LTC
-                var baseURL = "https://explorer.mcoin.global/api/addr/" + address + "/balance";
+                var baseURL = "https://explorer.mcoin.global/insight-lite-api/addr/" + address + "/balance";
                 var balance;
                 $.ajax({
                     url: baseURL,
