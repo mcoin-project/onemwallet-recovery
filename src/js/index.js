@@ -353,10 +353,10 @@
     function litecoinUseLtubChanged() {
         litecoinUseLtub = DOM.litecoinUseLtub.prop("checked");
         if (litecoinUseLtub) {
-            network = bitcoinjs.bitcoin.networks.litecoin;
+            network = bitcoinjs.bitcoin.networks.mcoin;
         }
         else {
-            network = bitcoinjs.bitcoin.networks.litecoinXprv;
+            network = bitcoinjs.bitcoin.networks.mcoinXprv;
         }
         phraseChanged();
     }
