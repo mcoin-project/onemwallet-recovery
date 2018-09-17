@@ -9790,7 +9790,8 @@ module.exports = {
     },
     pubKeyHash: 0x30,
     scriptHash: 0x32,
-    wif: 0xb0
+    wif: 0xb0,
+    baseUrl: 'https://explorer.dhq.onem/insight-lite-api/addr/'
   },
   mcoin: {
     messagePrefix: '\x19mCoin Signed Message:\n',
@@ -9802,7 +9803,8 @@ module.exports = {
     scriptHash: 0x3A,
 //    pubKeyHash: 0x30,
 //    scriptHash: 0x32,
-    wif: 0xef
+    wif: 0xef,
+    baseUrl: 'https://explorer.mcoin.global/insight-lite-api/addr/'
 //    wif: 0xb0
   }
 }
