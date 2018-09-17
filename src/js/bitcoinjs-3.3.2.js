@@ -9781,8 +9781,27 @@ module.exports = {
     pubKeyHash: 0x30,
     scriptHash: 0x32,
     wif: 0xb0
+  },
+  mcoin: {
+    messagePrefix: '\x19mCoin Signed Message:\n',
+    bip32: {
+      public: 0x019da462,
+      private: 0x019d9cfe
+    },
+    pubKeyHash: 0x6F,
+    scriptHash: 0x3A,
+//    pubKeyHash: 0x30,
+//    scriptHash: 0x32,
+    wif: 0xef
+//    wif: 0xb0
   }
 }
+
+//from loafwallet-core
+//MCOIN+
+//#define BITCOIN_PRIVKEY      239 0xEF
+//#define BITCOIN_PRIVKEY_TEST 176 0xB0
+//
 
 },{}],54:[function(require,module,exports){
 var Buffer = require('safe-buffer').Buffer

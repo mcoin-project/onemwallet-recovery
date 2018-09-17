@@ -324,10 +324,19 @@ bitcoinjs.bitcoin.networks.litecoinXprv = {
       public: 0x0488b21e,
       private: 0x0488ade4,
     },
-    pubKeyHash: 0x30,
-    scriptHash: 0x32,
+    pubKeyHash: 0x6F,
+    scriptHash: 0x3A,
+//    pubKeyHash: 0x30,
+//    scriptHash: 0x32,
     wif: 0xb0
 };
+
+/*
+#define BITCOIN_PUBKEY_ADDRESS      111
+#define BITCOIN_SCRIPT_ADDRESS      58
+#define BITCOIN_PUBKEY_ADDRESS_TEST 48
+#define BITCOIN_SCRIPT_ADDRESS_TEST 50
+*/
 
 bitcoinjs.bitcoin.networks.komodo = {
   messagePrefix: '\x18Komodo Signed Message:\n',

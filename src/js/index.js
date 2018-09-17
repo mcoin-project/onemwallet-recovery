@@ -6,7 +6,7 @@
     var seed = null;
     var bip32RootKey = null;
     var bip32ExtendedKey = null;
-    var network = bitcoinjs.bitcoin.networks.litecoin;
+    var network = bitcoinjs.bitcoin.networks.mcoin;
     var addressRowTemplate = $("#address-row-template");
 
     var showIndex = true;
@@ -850,13 +850,13 @@
                 }
                 // query Insight Lite for balance
                 // convert from sats to whole ltc + append LTC
-                var baseURL = "https://insight.litecore.io/api/addr/" + address + "/balance";
+                var baseURL = "https://explorer.mcoin.global/api/addr/" + address + "/balance";
                 var balance;
                 $.ajax({
                     url: baseURL,
                     success: function(data) {
                         data = data / 100000000
-                        balance = data.toString() + " LTC";
+                        balance = data.toString() + " MCN";
                     },
                     async: false,
                 });
@@ -1517,10 +1517,10 @@
 
     var networks = [
         {
-            name: "LTC - Litecoin",
+            name: "MCN - mCoin",
             segwitAvailable: true,
             onSelect: function() {
-                network = bitcoinjs.bitcoin.networks.litecoin;
+                network = bitcoinjs.bitcoin.networks.mcoin;
                 setHdCoin(2);
                 DOM.litecoinLtubContainer.removeClass("hidden");
             },
@@ -1529,14 +1529,14 @@
 
     var clients = [
         {
-            name: "LoafWallet",
+            name: "ONEmWallet",
             onSelect: function() {
                 DOM.bip32path.val("m/0'/0");
                 DOM.hardenedAddresses.prop('checked', false);
             }
         },
         {
-            name: "LoafWallet (change)",
+            name: "ONEmWallet (change)",
             onSelect: function() {
                 DOM.bip32path.val("m/0'/1");
                 DOM.hardenedAddresses.prop('checked', false);

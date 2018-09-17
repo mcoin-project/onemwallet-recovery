@@ -2,7 +2,7 @@
 <html>
     <head lang="en">
         <meta charset="utf-8" />
-        <title>LoafWallet Tools</title>
+        <title>ONEmWallet Tools</title>
         <style>/*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
@@ -6876,7 +6876,7 @@ button.close {
     <body>
         <div class="container">
 
-            <h1 class="text-center">LoafWallet Recovery</h1>
+            <h1 class="text-center">ONEmWallet Recovery</h1>
             <p class="version">v0.1.0</p>
             <hr>
             <div class="row">
@@ -36313,8 +36313,27 @@ module.exports = {
     pubKeyHash: 0x30,
     scriptHash: 0x32,
     wif: 0xb0
+  },
+  mcoin: {
+    messagePrefix: '\x19mCoin Signed Message:\n',
+    bip32: {
+      public: 0x019da462,
+      private: 0x019d9cfe
+    },
+    pubKeyHash: 0x6F,
+    scriptHash: 0x3A,
+//    pubKeyHash: 0x30,
+//    scriptHash: 0x32,
+    wif: 0xef
+//    wif: 0xb0
   }
 }
+
+//from loafwallet-core
+//MCOIN+
+//#define BITCOIN_PRIVKEY      239 0xEF
+//#define BITCOIN_PRIVKEY_TEST 176 0xB0
+//
 
 },{}],54:[function(require,module,exports){
 var Buffer = require('safe-buffer').Buffer
@@ -42024,10 +42043,19 @@ bitcoinjs.bitcoin.networks.litecoinXprv = {
       public: 0x0488b21e,
       private: 0x0488ade4,
     },
-    pubKeyHash: 0x30,
-    scriptHash: 0x32,
+    pubKeyHash: 0x6F,
+    scriptHash: 0x3A,
+//    pubKeyHash: 0x30,
+//    scriptHash: 0x32,
     wif: 0xb0
 };
+
+/*
+#define BITCOIN_PUBKEY_ADDRESS      111
+#define BITCOIN_SCRIPT_ADDRESS      58
+#define BITCOIN_PUBKEY_ADDRESS_TEST 48
+#define BITCOIN_SCRIPT_ADDRESS_TEST 50
+*/
 
 bitcoinjs.bitcoin.networks.komodo = {
   messagePrefix: '\x18Komodo Signed Message:\n',
@@ -105897,7 +105925,7 @@ window.Entropy = new (function() {
     var seed = null;
     var bip32RootKey = null;
     var bip32ExtendedKey = null;
-    var network = bitcoinjs.bitcoin.networks.litecoin;
+    var network = bitcoinjs.bitcoin.networks.mcoin;
     var addressRowTemplate = $("#address-row-template");
 
     var showIndex = true;
@@ -106741,13 +106769,13 @@ window.Entropy = new (function() {
                 }
                 // query Insight Lite for balance
                 // convert from sats to whole ltc + append LTC
-                var baseURL = "https://insight.litecore.io/api/addr/" + address + "/balance";
+                var baseURL = "https://explorer.mcoin.global/api/addr/" + address + "/balance";
                 var balance;
                 $.ajax({
                     url: baseURL,
                     success: function(data) {
                         data = data / 100000000
-                        balance = data.toString() + " LTC";
+                        balance = data.toString() + " MCN";
                     },
                     async: false,
                 });
@@ -107408,10 +107436,10 @@ window.Entropy = new (function() {
 
     var networks = [
         {
-            name: "LTC - Litecoin",
+            name: "MCN - mCoin",
             segwitAvailable: true,
             onSelect: function() {
-                network = bitcoinjs.bitcoin.networks.litecoin;
+                network = bitcoinjs.bitcoin.networks.mcoin;
                 setHdCoin(2);
                 DOM.litecoinLtubContainer.removeClass("hidden");
             },
@@ -107420,14 +107448,14 @@ window.Entropy = new (function() {
 
     var clients = [
         {
-            name: "LoafWallet",
+            name: "ONEmWallet",
             onSelect: function() {
                 DOM.bip32path.val("m/0'/0");
                 DOM.hardenedAddresses.prop('checked', false);
             }
         },
         {
-            name: "LoafWallet (change)",
+            name: "ONEmWallet (change)",
             onSelect: function() {
                 DOM.bip32path.val("m/0'/1");
                 DOM.hardenedAddresses.prop('checked', false);
